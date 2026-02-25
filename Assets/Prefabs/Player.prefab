@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2738380567816245834}
   - component: {fileID: -5442971658099831192}
   - component: {fileID: 6436721417596875277}
+  - component: {fileID: 2520320045561761619}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -229,7 +230,39 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dbd09978-406a-4519-aa8f-94f1a6428260
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99b9c396-6efd-4735-bf54-dadad78c4954
+    m_ActionName: 'Player/Jump[/Keyboard/space,/Keyboard/rightCtrl]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a197a3a7-82e5-4702-9d0a-06d51366bcdb
+    m_ActionName: 'Player/Interact[/Keyboard/e,/Keyboard/slash]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f93c39c-0541-45cb-8cdd-e043967d370a
+    m_ActionName: 'Player/CameraOrbit[/Keyboard/q,/Keyboard/e,/Mouse/rightButton,/Mouse/delta/left,/Mouse/delta/right,/Keyboard/semicolon,/Keyboard/quote]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2611d94a-3fdb-4f5b-802f-ebb454428c54
+    m_ActionName: 'Player/Pause[/Keyboard/escape,/Keyboard/backspace]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0aae8cad-25bf-4595-ac6d-08a850c438fe
+    m_ActionName: 'Player/Dash[/Keyboard/shift,/Keyboard/slash]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b04a64b6-cd30-46da-b254-0a2dffab8f97
+    m_ActionName: 'Player/Cancel[/Keyboard/tab,/Keyboard/quote]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eb3b0bde-d9f7-4e8a-a85e-5bcac69bf19e
+    m_ActionName: 'Player/DolphinDive[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -340,6 +373,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashTrailColor: {r: 0.55722225, g: 0.41870406, b: 0.81886786, a: 1}
+--- !u!114 &2520320045561761619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d484fe16d36744bbe38fdcad8c5f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 0

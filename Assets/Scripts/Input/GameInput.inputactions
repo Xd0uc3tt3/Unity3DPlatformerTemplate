@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "GameInput",
     "maps": [
         {
@@ -18,7 +19,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "99b9c396-6efd-4735-bf54-dadad78c4954",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -63,7 +64,16 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "b04a64b6-cd30-46da-b254-0a2dffab8f97",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DolphinDive",
+                    "type": "Button",
+                    "id": "eb3b0bde-d9f7-4e8a-a85e-5bcac69bf19e",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -540,6 +550,17 @@
                     "processors": "",
                     "groups": "KeyboardSecondary",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7702120-77da-48f6-be1b-d8922c953713",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DolphinDive",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

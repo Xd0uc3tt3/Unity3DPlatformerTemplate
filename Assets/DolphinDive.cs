@@ -11,6 +11,10 @@ public class DolphinDive : MonoBehaviour
     [SerializeField] private float upwardForce = 5f;
     [SerializeField] private float cooldownTime = 0.2f;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip diveSound;
+
     [SerializeField] private string diveTriggerName = "DolphinDive";
 
     private bool canDolphinDive = true;
@@ -35,6 +39,13 @@ public class DolphinDive : MonoBehaviour
     {
         if (moveController.isGrounded)
         {
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(jumpSound);
+                audioSource.pitch = 1f;
+            }
+
             return;
         }
         if (!canDolphinDive || Time.time < lastDiveTime + cooldownTime)
@@ -60,6 +71,13 @@ public class DolphinDive : MonoBehaviour
         Vector3 diveDirection = transform.forward * forwardForce + Vector3.up * upwardForce;
 
         rb.AddForce(diveDirection, ForceMode.Impulse);
+
+        if (audioSource != null && diveSound != null)
+        {
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(diveSound);
+            audioSource.pitch = 1f;
+        }
 
         if (animator != null)
         {

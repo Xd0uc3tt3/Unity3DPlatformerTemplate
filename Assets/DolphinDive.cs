@@ -11,6 +11,8 @@ public class DolphinDive : MonoBehaviour
     [SerializeField] private float upwardForce = 5f;
     [SerializeField] private float cooldownTime = 0.2f;
 
+    [SerializeField] private float downwardForce = 10f;
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip diveSound;
@@ -19,6 +21,10 @@ public class DolphinDive : MonoBehaviour
 
     private bool canDolphinDive = true;
     private float lastDiveTime;
+
+    private float diveAirTimer = 0f;
+    private bool slamApplied = false;
+    private bool diveActive = false;
 
     private void Awake()
     {
@@ -32,6 +38,10 @@ public class DolphinDive : MonoBehaviour
         if (moveController.isGrounded)
         {
             canDolphinDive = true;
+            diveActive = false;
+            slamApplied = false;
+            diveAirTimer = 0f;
+            return;
         }
     }
 
@@ -39,23 +49,23 @@ public class DolphinDive : MonoBehaviour
     {
         if (moveController.isGrounded)
         {
-            if (audioSource != null && jumpSound != null)
-            {
-                audioSource.pitch = Random.Range(0.9f, 1.1f);
-                audioSource.PlayOneShot(jumpSound);
-                audioSource.pitch = 1f;
-            }
-
+            PlaySound(jumpSound);
             return;
         }
+
         if (!canDolphinDive || Time.time < lastDiveTime + cooldownTime)
         {
             return;
         }
-        else
+
+        if (diveActive == true)
         {
-            ExecuteDive();
+            ApplyDownwardForce();
+            return;
         }
+
+        ExecuteDive();
+
 
     }
 
@@ -64,24 +74,45 @@ public class DolphinDive : MonoBehaviour
         canDolphinDive = false;
         lastDiveTime = Time.time;
 
+        diveActive = true;
+        slamApplied = false;
+        diveAirTimer = 0f;
+
         Vector3 velocity = rb.linearVelocity;
         velocity.y = 0f;
         rb.linearVelocity = velocity;
 
         Vector3 diveDirection = transform.forward * forwardForce + Vector3.up * upwardForce;
-
         rb.AddForce(diveDirection, ForceMode.Impulse);
 
-        if (audioSource != null && diveSound != null)
-        {
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(diveSound);
-            audioSource.pitch = 1f;
-        }
+        PlaySound(diveSound);
 
         if (animator != null)
         {
-            animator.SetTrigger("DolphinDive");
+            animator.SetTrigger(diveTriggerName);
         }
+    }
+
+    private void ApplyDownwardForce()
+    {
+        slamApplied = true;
+
+        Vector3 velocity = rb.linearVelocity;
+        velocity.y = 0f;
+        rb.linearVelocity = velocity;
+
+        rb.AddForce(Vector3.down * downwardForce, ForceMode.Impulse);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+        {
+            return;
+        }
+
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clip);
+        audioSource.pitch = 1f;
     }
 }

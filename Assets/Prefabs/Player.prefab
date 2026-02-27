@@ -387,8 +387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardForce: 8
-  upwardForce: 5
+  upwardForce: 6
   cooldownTime: 0.2
+  downwardForce: 20
   audioSource: {fileID: 3766503696348398142}
   jumpSound: {fileID: 8300000, guid: 9c306053060f9914aa6d0b404bb95efa, type: 3}
   diveSound: {fileID: 8300000, guid: 0defa02b199fcbf4891b2cad2836629b, type: 3}

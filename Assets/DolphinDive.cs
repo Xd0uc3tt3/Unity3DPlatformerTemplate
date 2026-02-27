@@ -11,8 +11,6 @@ public class DolphinDive : MonoBehaviour
     [SerializeField] private float upwardForce = 5f;
     [SerializeField] private float cooldownTime = 0.2f;
 
-    [SerializeField] private float downwardForce = 10f;
-
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip diveSound;
@@ -24,7 +22,6 @@ public class DolphinDive : MonoBehaviour
 
     private float diveAirTimer = 0f;
     private bool slamApplied = false;
-    private bool diveActive = false;
 
     private void Awake()
     {
@@ -38,7 +35,6 @@ public class DolphinDive : MonoBehaviour
         if (moveController.isGrounded)
         {
             canDolphinDive = true;
-            diveActive = false;
             slamApplied = false;
             diveAirTimer = 0f;
             return;
@@ -58,15 +54,7 @@ public class DolphinDive : MonoBehaviour
             return;
         }
 
-        if (diveActive == true)
-        {
-            ApplyDownwardForce();
-            return;
-        }
-
         ExecuteDive();
-
-
     }
 
     private void ExecuteDive()
@@ -74,7 +62,6 @@ public class DolphinDive : MonoBehaviour
         canDolphinDive = false;
         lastDiveTime = Time.time;
 
-        diveActive = true;
         slamApplied = false;
         diveAirTimer = 0f;
 
@@ -93,17 +80,6 @@ public class DolphinDive : MonoBehaviour
         }
     }
 
-    private void ApplyDownwardForce()
-    {
-        slamApplied = true;
-
-        Vector3 velocity = rb.linearVelocity;
-        velocity.y = 0f;
-        rb.linearVelocity = velocity;
-
-        rb.AddForce(Vector3.down * downwardForce, ForceMode.Impulse);
-    }
-
     private void PlaySound(AudioClip clip)
     {
         if (audioSource == null || clip == null)
@@ -116,3 +92,4 @@ public class DolphinDive : MonoBehaviour
         audioSource.pitch = 1f;
     }
 }
+

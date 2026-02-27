@@ -1,17 +1,18 @@
-[SerializeField] private float upwardForce = 5f;
-[SerializeField] private float cooldownTime = 0.2f;
-[SerializeField] private float downwardForce = 10f;
+   [SerializeField] private float upwardForce = 5f;
+    [SerializeField] private float cooldownTime = 0.2f;
+    [SerializeField] private float downwardForce = 10f;
 
-[SerializeField] private AudioSource audioSource;
-[SerializeField] private AudioClip jumpSound;
-[SerializeField] private AudioClip diveSound;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip diveSound;
 
-private bool canDolphinDive = true;
-private float lastDiveTime;
+    private bool canDolphinDive = true;
+    private float lastDiveTime;
 
-private float diveAirTimer = 0f;
-private bool slamApplied = false;
-private bool diveActive = false;
+    private float diveAirTimer = 0f;
+    private bool slamApplied = false;
+    private bool diveActive = false;
+
 
 private void Awake()
 {
